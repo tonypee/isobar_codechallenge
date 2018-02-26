@@ -3,13 +3,14 @@ import { observable, action } from "mobx";
 import { shuffle } from "../core/utils";
 import { observer } from "mobx-react";
 import Piece from "./Piece";
+import { style } from "typestyle";
 
 @observer
 export default class Puzzle extends React.Component<{}, {}> {
   model: PuzzleModel = new PuzzleModel();
   render() {
     return (
-      <div>
+      <div className={puzzleStyle}>
         {this.model.pieces.map(number => (
           <Piece key={number} number={number} />
         ))}
@@ -28,3 +29,12 @@ class PuzzleModel {
     console.log(JSON.stringify(this.pieces));
   }
 }
+
+const puzzleStyle = style({
+  background: "red",
+  $nest: {
+    ".holder": {
+      padding: "0 10px 0 30px"
+    }
+  }
+});
