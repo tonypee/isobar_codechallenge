@@ -1,0 +1,16 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "jsx": "react",
+    "target": "es2015",
+    "lib": ["dom", "es7", "es2017"],
+    "module": "commonjs",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "outDir": "build",
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": ["node_modules"]
+}
