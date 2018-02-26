@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import App from "./App";
+import Puzzle from "./components/Puzzle";
 
-ReactDOM.render(<App />, document.getElementById("main"));
+ReactDOM.render(<Puzzle />, document.getElementById("main"));
