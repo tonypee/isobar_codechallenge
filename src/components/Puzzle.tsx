@@ -11,9 +11,11 @@ export default class Puzzle extends React.Component<{}, {}> {
   render() {
     return (
       <div className={puzzleStyle}>
-        {this.model.pieces.map(number => (
-          <Piece key={number} number={number} />
-        ))}
+        <div className="pieces">
+          {this.model.pieces.map(number => (
+            <Piece key={number} number={number} />
+          ))}
+        </div>
         <button onClick={() => this.model.randomize()}>Randomize!</button>
       </div>
     );
@@ -31,10 +33,8 @@ class PuzzleModel {
 }
 
 const puzzleStyle = style({
-  background: "red",
-  $nest: {
-    ".holder": {
-      padding: "0 10px 0 30px"
-    }
-  }
+  background: "lightgrey",
+  border: "5px solid blue",
+  padding: 10,
+  width: 300
 });
