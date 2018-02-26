@@ -1,16 +1,11 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "moduleResolution": "node",
-    "jsx": "react",
-    "target": "es2015",
-    "lib": ["dom", "es7", "es2017"],
-    "module": "commonjs",
-    "noImplicitAny": false,
+    "outDir": "./dist/",
     "sourceMap": true,
-    "outDir": "build",
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react"
   },
-  "exclude": ["node_modules"]
+  "include": ["./src/**/*"]
 }
