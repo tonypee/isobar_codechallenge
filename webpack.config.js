@@ -1,3 +1,6 @@
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
+
 const path = require("path");
 
 module.exports = {
@@ -22,5 +25,6 @@ module.exports = {
         loader: "url-loader?name=app/images/[name].[ext]"
       }
     ]
-  }
+  },
+  plugins: [new BundleAnalyzerPlugin()]
 };

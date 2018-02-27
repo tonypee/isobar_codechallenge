@@ -9,8 +9,9 @@
   "author": "Tony Polinelli <tonypolinelli@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack-dev-server"
+    "build": "webpack -p",
+    "dev": "webpack-dev-server",
+    "stats": "webpack -p --profile --json > stats.json"
   },
   "dependencies": {
     "@types/react": "^16.0.38",
@@ -26,6 +27,7 @@
     "typestyle": "^1.7.1",
     "url-loader": "^0.6.2",
     "webpack": "^4.0.0",
+    "webpack-bundle-analyzer": "^2.11.0",
     "webpack-cli": "^2.0.9",
     "webpack-dev-server": "^3.0.0"
   }
