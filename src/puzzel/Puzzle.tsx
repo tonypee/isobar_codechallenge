@@ -34,5 +34,6 @@ export default class Puzzle extends React.Component<{}, {}> {
 const puzzleStyle = style({
   background: "white",
   padding: 10,
-  width: 300
+  width: 300,
+  lineHeight: 0
 });

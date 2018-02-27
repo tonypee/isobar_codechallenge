@@ -14,10 +14,10 @@ export default class Piece extends React.Component<Props, {}> {
   render() {
     return (
       <div
-        className={pieceStyle(
-          this.props.puzzelModel.isActive(this.props.index),
-          this.props.number
-        )}
+        className={[
+          pieceStyle(this.props.number),
+          this.props.puzzelModel.isTouching(this.props.index) && "touching"
+        ].join(" ")}
         onClick={() => this.props.puzzelModel.select(this.props.index)}
       >
         {this.props.number != null ? (
@@ -30,17 +30,18 @@ export default class Piece extends React.Component<Props, {}> {
   }
 }
 
-const pieceStyle = (active, index) => {
+const pieceStyle = index => {
   return style({
-    height: 100,
-    width: 100,
+    height: 96,
+    width: 96,
+    margin: 2,
     display: "inline-block",
-    background: !active ? "inherit" : "grey",
+    background: "grey",
     overflow: "hidden",
     position: "relative",
     transform: "translate3d(0, 0, 0)",
     $nest: {
-      "&:hover": {
+      "&.touching:hover": {
         opacity: 0.5
       },
       img: {

@@ -13,6 +13,7 @@ const wrapperStyle = style({
 cssRaw(`
   html, body, #main {
     height: 100%;
+    user-select: none;
   }
 `);
 
