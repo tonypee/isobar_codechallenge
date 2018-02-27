@@ -1,5 +1,4 @@
 import { observable, action } from "mobx";
-import { shuffle } from "../core/utils";
 
 export default class PuzzleModel {
   @observable pieces: number[] = [1, 2, 3, 4, 5, 6, 7, 8, null];
@@ -14,28 +13,50 @@ export default class PuzzleModel {
   ];
   @observable image: string = this.images[0];
   @observable preview: boolean = false;
+  @observable randomizing: boolean = false;
+  @observable randomizeStepsRemaining: number = 0;
 
   constructor() {
     this.randomize();
   }
 
+  // randomize steps forward in time, so that the puzzle is always solvable.
   @action
   randomize() {
-    this.pieces = shuffle(this.pieces);
-    this.current = this.pieces.indexOf(null);
+    this.randomizing = true;
+    this.randomizeStepsRemaining = 20;
+    let n = 50;
+    while (n) {
+      let selected;
+      while (true) {
+        const ix = Math.floor(Math.random() * (this.pieces.length - 1));
+        const selected = this.pieces[ix];
+        if (selected && this.isTouching(selected)) {
+          this.select(selected);
+          break;
+        }
+      }
+      n--;
+      if (n == 0) {
+        this.randomizing = false;
+      }
+    }
   }
 
   @action
   select(index: number) {
     if (!this.isTouching(index)) {
+      console.log("not touching", index);
       return;
     }
     this.pieces[this.current] = this.pieces[index];
     this.pieces[index] = null;
     this.current = index;
 
-    if (this.getHash() == this.solved) {
-      window.alert("CONGRATULATIONS!!");
+    if (this.getHash() == this.solved && !this.randomizing) {
+      setTimeout(() => {
+        window.alert("CONGRATULATIONS!!");
+      }, 300);
     }
   }
 

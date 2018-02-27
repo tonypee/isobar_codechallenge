@@ -1,6 +1,5 @@
 import * as React from "react";
 import { observable, action } from "mobx";
-import { shuffle } from "../core/utils";
 import { observer } from "mobx-react";
 import Piece from "./Piece";
 import { style } from "typestyle";
@@ -15,10 +14,13 @@ export default class Puzzle extends React.Component<{}, {}> {
     return (
       <div className={puzzleStyle}>
         <div className="pieces">
-          <FlipMove duration={200} easing="ease-out">
+          <FlipMove
+            duration={this.model.randomizing ? 100 : 200}
+            easing="ease-out"
+          >
             {pieces.map((number, ix) => (
               <Piece
-                key={number}
+                key={`n${number}`}
                 index={ix}
                 number={number}
                 puzzelModel={this.model}
@@ -38,6 +40,7 @@ export default class Puzzle extends React.Component<{}, {}> {
         <div>
           {this.model.images.map(image => (
             <img
+              key={image}
               src={image}
               className="thumb"
               onClick={() => this.model.changeImage(image)}
