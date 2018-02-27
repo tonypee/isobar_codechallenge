@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 
 interface Props {
   index: number;
-  value: string;
+  number: number;
   puzzelModel: PuzzelModel;
 }
 
@@ -16,11 +16,11 @@ export default class Piece extends React.Component<Props, {}> {
       <div
         className={pieceStyle(
           this.props.puzzelModel.isActive(this.props.index),
-          this.props.value
+          this.props.number
         )}
         onClick={() => this.props.puzzelModel.select(this.props.index)}
       >
-        {this.props.value != null ? (
+        {this.props.number != null ? (
           <img src={this.props.puzzelModel.image} />
         ) : (
           <span />

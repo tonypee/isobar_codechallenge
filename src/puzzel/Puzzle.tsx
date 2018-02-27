@@ -15,11 +15,11 @@ export default class Puzzle extends React.Component<{}, {}> {
       <div className={puzzleStyle}>
         <div className="pieces">
           <FlipMove duration={200} easing="ease-out">
-            {this.model.pieces.map((value, ix) => (
+            {this.model.pieces.map((number, ix) => (
               <Piece
-                key={value}
+                key={number}
                 index={ix}
-                value={value}
+                number={number}
                 puzzelModel={this.model}
               />
             ))}
@@ -32,8 +32,7 @@ export default class Puzzle extends React.Component<{}, {}> {
 }
 
 const puzzleStyle = style({
-  background: "lightgrey",
-  border: "5px solid blue",
+  background: "white",
   padding: 10,
   width: 300
 });
