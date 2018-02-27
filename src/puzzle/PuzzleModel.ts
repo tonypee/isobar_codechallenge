@@ -14,7 +14,6 @@ export default class PuzzleModel {
   @observable image: string = this.images[0];
   @observable preview: boolean = false;
   @observable randomizing: boolean = false;
-  @observable randomizeStepsRemaining: number = 0;
 
   constructor() {
     this.randomize();
@@ -24,7 +23,6 @@ export default class PuzzleModel {
   @action
   randomize() {
     this.randomizing = true;
-    this.randomizeStepsRemaining = 20;
     let n = 50;
     while (n) {
       let selected;
