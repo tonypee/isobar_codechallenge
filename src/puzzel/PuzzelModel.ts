@@ -3,6 +3,7 @@ import { shuffle } from "../core/utils";
 
 export default class PuzzleModel {
   @observable pieces: number[] = [1, 2, 3, 4, 5, 6, 7, 8, null];
+  @observable original: number[] = this.pieces.concat([]);
   @observable solved: string = this.getHash();
   @observable current: number = this.pieces.indexOf(null);
   @observable
@@ -12,6 +13,7 @@ export default class PuzzleModel {
     require("../images/3.png")
   ];
   @observable image: string = this.images[0];
+  @observable preview: boolean = false;
 
   constructor() {
     this.randomize();
@@ -41,6 +43,16 @@ export default class PuzzleModel {
   changeImage(image) {
     this.image = image;
     this.randomize();
+  }
+
+  @action
+  startPreview() {
+    this.preview = true;
+  }
+
+  @action
+  endPreview() {
+    this.preview = false;
   }
 
   getHash() {

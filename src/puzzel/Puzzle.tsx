@@ -11,11 +11,12 @@ import FlipMove from "react-flip-move";
 export default class Puzzle extends React.Component<{}, {}> {
   model: PuzzleModel = new PuzzleModel();
   render() {
+    const pieces = this.model.preview ? this.model.original : this.model.pieces;
     return (
       <div className={puzzleStyle}>
         <div className="pieces">
           <FlipMove duration={200} easing="ease-out">
-            {this.model.pieces.map((number, ix) => (
+            {pieces.map((number, ix) => (
               <Piece
                 key={number}
                 index={ix}
@@ -26,6 +27,12 @@ export default class Puzzle extends React.Component<{}, {}> {
           </FlipMove>
         </div>
         <button onClick={() => this.model.randomize()}>Randomize!</button>
+        <button
+          onMouseDown={() => this.model.startPreview()}
+          onMouseUp={() => this.model.endPreview()}
+        >
+          Preview
+        </button>
         <div>
           {this.model.images.map(image => (
             <img
@@ -49,7 +56,10 @@ const puzzleStyle = style({
     ".thumb": {
       width: 50,
       height: 50,
-      margin: 10
+      margin: "10px 10px 0 0"
+    },
+    button: {
+      margin: "10px 5px 0 0"
     }
   }
 });
