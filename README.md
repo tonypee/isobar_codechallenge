@@ -1,6 +1,6 @@
 # Isobar Puzzle - Tony Polinelli
 
-Notes:
+### Notes:
 
 * Didnt use a boilerplate
 * Typescript
@@ -13,4 +13,15 @@ Additions
 * animation (using library)
 * preview
 
-[Launch](https://tonypee.github.io/isobar_codechallenge/dist/)
+I could try to optimize the size of the build by extracting the images, this would make the bundle smaller - but for the example, its not really needed.
+
+### Commands:
+
+```
+yarn
+yarn dev
+yarn build
+yarn stats # to view stats output
+```
+
+[Launch Application](https://tonypee.github.io/isobar_codechallenge/dist/)
