@@ -26,6 +26,15 @@ export default class Puzzle extends React.Component<{}, {}> {
           </FlipMove>
         </div>
         <button onClick={() => this.model.randomize()}>Randomize!</button>
+        <div>
+          {this.model.images.map(image => (
+            <img
+              src={image}
+              className="thumb"
+              onClick={() => this.model.changeImage(image)}
+            />
+          ))}
+        </div>
       </div>
     );
   }
@@ -35,5 +44,12 @@ const puzzleStyle = style({
   background: "white",
   padding: 10,
   width: 300,
-  lineHeight: 0
+  lineHeight: 0,
+  $nest: {
+    ".thumb": {
+      width: 50,
+      height: 50,
+      margin: 10
+    }
+  }
 });

@@ -5,7 +5,13 @@ export default class PuzzleModel {
   @observable pieces: number[] = [1, 2, 3, 4, 5, 6, 7, 8, null];
   @observable solved: string = this.getHash();
   @observable current: number = this.pieces.indexOf(null);
-  @observable image: string = require("../images/1.png");
+  @observable
+  images: string[] = [
+    require("../images/1.png"),
+    require("../images/2.png"),
+    require("../images/3.png")
+  ];
+  @observable image: string = this.images[0];
 
   constructor() {
     this.randomize();
@@ -29,6 +35,12 @@ export default class PuzzleModel {
     if (this.getHash() == this.solved) {
       window.alert("CONGRATULATIONS!!");
     }
+  }
+
+  @action
+  changeImage(image) {
+    this.image = image;
+    this.randomize();
   }
 
   getHash() {
