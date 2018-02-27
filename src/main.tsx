@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import Puzzle from "./puzzel/Puzzle";
+import Puzzle from "./puzzle/Puzzle";
 import { style, cssRaw } from "typestyle";
 
 const wrapperStyle = style({
