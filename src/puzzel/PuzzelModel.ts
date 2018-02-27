@@ -3,8 +3,13 @@ import { shuffle } from "../core/utils";
 
 export default class PuzzleModel {
   @observable pieces: number[] = [1, 2, 3, 4, 5, 6, 7, 8, null];
+  @observable solved: string = this.getHash();
   @observable current: number = this.pieces.indexOf(null);
   @observable image: string = require("../images/1.png");
+
+  constructor() {
+    this.randomize();
+  }
 
   @action
   randomize() {
@@ -20,6 +25,14 @@ export default class PuzzleModel {
     this.pieces[this.current] = this.pieces[index];
     this.pieces[index] = null;
     this.current = index;
+
+    if (this.getHash() == this.solved) {
+      window.alert("CONGRATULATIONS!!");
+    }
+  }
+
+  getHash() {
+    return JSON.stringify(this.pieces);
   }
 
   isActive(index: number) {

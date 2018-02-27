@@ -45,8 +45,8 @@ const pieceStyle = index => {
         opacity: 0.5
       },
       img: {
-        marginTop: -Math.floor(index / 3) * 100,
-        marginLeft: -Math.abs(index % 3) * 100
+        marginTop: -Math.floor((index - 1) / 3) * 100,
+        marginLeft: -Math.abs((index - 1) % 3) * 100
       }
     }
   });
