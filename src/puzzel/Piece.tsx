@@ -15,26 +15,38 @@ export default class Piece extends React.Component<Props, {}> {
     return (
       <div
         className={pieceStyle(
-          this.props.puzzelModel.isActive(this.props.index)
+          this.props.puzzelModel.isActive(this.props.index),
+          this.props.value
         )}
         onClick={() => this.props.puzzelModel.select(this.props.index)}
       >
-        {this.props.value == null ? "x" : this.props.value}
-        {this.props.puzzelModel.isTouching(this.props.index) ? "y" : "n"}
+        {this.props.value != null ? (
+          <img src={this.props.puzzelModel.image} />
+        ) : (
+          <span />
+        )}
       </div>
     );
   }
 }
 
-const pieceStyle = active =>
-  style({
+const pieceStyle = (active, index) => {
+  return style({
     height: 100,
     width: 100,
     display: "inline-block",
     background: !active ? "inherit" : "grey",
+    overflow: "hidden",
+    position: "relative",
+    transform: "translate3d(0, 0, 0)",
     $nest: {
       "&:hover": {
-        background: "yellow"
+        opacity: 0.5
+      },
+      img: {
+        marginTop: -Math.floor(index / 3) * 100,
+        marginLeft: -Math.abs(index % 3) * 100
       }
     }
   });
+};

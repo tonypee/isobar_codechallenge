@@ -15,6 +15,12 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js"]
   },
   module: {
-    rules: [{ test: /\.tsx?$/, loader: "ts-loader" }]
+    rules: [
+      { test: /\.tsx?$/, loader: "ts-loader" },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: "url-loader?name=app/images/[name].[ext]"
+      }
+    ]
   }
 };

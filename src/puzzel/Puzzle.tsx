@@ -14,7 +14,7 @@ export default class Puzzle extends React.Component<{}, {}> {
     return (
       <div className={puzzleStyle}>
         <div className="pieces">
-          <FlipMove duration={250} easing="ease-out">
+          <FlipMove duration={200} easing="ease-out">
             {this.model.pieces.map((value, ix) => (
               <Piece
                 key={value}

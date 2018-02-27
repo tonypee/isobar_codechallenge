@@ -4,10 +4,12 @@ import { shuffle } from "../core/utils";
 export default class PuzzleModel {
   @observable pieces: string[] = ["1", "2", "3", "4", "5", "6", "7", "8", null];
   @observable current: number = this.pieces.indexOf(null);
+  @observable image: string = require("../images/1.png");
 
   @action
   randomize() {
     this.pieces = shuffle(this.pieces);
+    this.current = this.pieces.indexOf(null);
   }
 
   @action
