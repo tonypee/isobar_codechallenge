@@ -1,6 +1,6 @@
 import * as React from "react";
 import { style } from "typestyle";
-import PuzzelModel from "./PuzzelModel";
+import PuzzelModel from "./PuzzleModel";
 import { observer } from "mobx-react";
 
 interface Props {

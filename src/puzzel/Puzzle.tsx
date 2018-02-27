@@ -4,7 +4,7 @@ import { shuffle } from "../core/utils";
 import { observer } from "mobx-react";
 import Piece from "./Piece";
 import { style } from "typestyle";
-import PuzzleModel from "./PuzzelModel";
+import PuzzleModel from "./PuzzleModel";
 import FlipMove from "react-flip-move";
 
 @observer
