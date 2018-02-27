@@ -14,10 +14,7 @@ export default class Piece extends React.Component<Props, {}> {
   render() {
     return (
       <div
-        className={[
-          pieceStyle(this.props.number),
-          this.props.puzzelModel.isTouching(this.props.index) && "touching"
-        ].join(" ")}
+        className={pieceStyle(this.props.number)}
         onClick={() => this.props.puzzelModel.select(this.props.index)}
       >
         {this.props.number != null ? (
@@ -41,9 +38,6 @@ const pieceStyle = index => {
     position: "relative",
     transform: "translate3d(0, 0, 0)",
     $nest: {
-      "&.touching:hover": {
-        opacity: 0.5
-      },
       img: {
         marginTop: -Math.floor((index - 1) / 3) * 100,
         marginLeft: -Math.abs((index - 1) % 3) * 100

@@ -30,6 +30,8 @@ export default class Puzzle extends React.Component<{}, {}> {
         <button
           onMouseDown={() => this.model.startPreview()}
           onMouseUp={() => this.model.endPreview()}
+          onTouchStart={() => this.model.startPreview()}
+          onTouchEnd={() => this.model.endPreview()}
         >
           Preview
         </button>
