@@ -15,8 +15,7 @@ export default class PuzzleModel {
     if (!this.isTouching(index)) {
       return;
     }
-    const val = this.pieces[index];
-    this.pieces[this.current] = val;
+    this.pieces[this.current] = this.pieces[index];
     this.pieces[index] = null;
     this.current = index;
   }
