@@ -4,6 +4,7 @@ import { shuffle } from "../core/utils";
 import { observer } from "mobx-react";
 import Piece from "./Piece";
 import { style } from "typestyle";
+import PuzzleModel from "./PuzzelModel";
 
 @observer
 export default class Puzzle extends React.Component<{}, {}> {
@@ -12,23 +13,18 @@ export default class Puzzle extends React.Component<{}, {}> {
     return (
       <div className={puzzleStyle}>
         <div className="pieces">
-          {this.model.pieces.map(number => (
-            <Piece key={number} number={number} />
+          {this.model.pieces.map((value, ix) => (
+            <Piece
+              key={value}
+              index={ix}
+              value={value}
+              puzzelModel={this.model}
+            />
           ))}
         </div>
         <button onClick={() => this.model.randomize()}>Randomize!</button>
       </div>
     );
-  }
-}
-
-class PuzzleModel {
-  @observable pieces: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-  @action
-  randomize() {
-    this.pieces = shuffle(this.pieces);
-    console.log(JSON.stringify(this.pieces));
   }
 }
 
